@@ -17,10 +17,34 @@ const gamemaster = (function () {
 const game = (function () {
 
     let _turn = 1;
+    let Player1 = {};
+    let Player2 = {};
+
+    //Player factory
+    const Player = function (name, mark) {
+
+        this.name = name;
+        this.mark = mark;
+
+        const addMark = (e) => {
+            let target = e.target;
+            let index = Number(target.id);
+
+            target.textContent = mark;
+            gameboard.boardArray[index] = target.textContent;
+
+            let old_element = document.getElementById(target.id);
+            let new_element = old_element.cloneNode(true);
+            old_element.parentNode.replaceChild(new_element, old_element);
+
+        };
+
+        return { name, mark, addMark };
+    }
 
 
     let gameboard = {
-        boardArray: ['O', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X'],
+        boardArray: ['', '', '', '', '', '', '', '', ''],
 
         fillBoard: function () {
             for (let i = 0; i < this.boardArray.length; i++) {
@@ -34,10 +58,8 @@ const game = (function () {
                 document.getElementById(`${i}`).textContent = '';
 
             }
+            this.boardArray = ['', '', '', '', '', '', '', '', ''];
         },
-
-
-
     };
 
     function _checkWinner() {
@@ -50,36 +72,61 @@ const game = (function () {
     }
 
     function _setBoard() {
+
+
         for (let i = 0; i < gameboard.boardArray.length; i++) {
             document.getElementById(`${i}`).addEventListener('click', (e) => {
-                let target = e.target;
-                if(_turn == 1){
-                    target.textContent = 'O';
-                    _turn = 2;
-                }
-                else if(_turn == 2){
-                    target.textContent = 'X';
-                    _turn = 1;
-                }
 
+
+                if (_turn == 1) {
+                    Player1.addMark(e);
+                    _turn = 2;
+                    document.querySelector('.player1').classList.remove('playerturn');
+                    document.querySelector('.player2').classList.add('playerturn');
+
+                }
+                else if (_turn == 2) {
+                    Player2.addMark(e);
+                    _turn = 1;
+                    document.querySelector('.player2').classList.remove('playerturn');
+                    document.querySelector('.player1').classList.add('playerturn');
+
+                }
 
             });
         }
 
     }
 
-    
+
+
+
 
 
 
     function start() {
-        _setBoard();
+
 
         let name1 = document.getElementById('formPlayer1Name').value;
         let name2 = document.getElementById('formPlayer2Name').value;
-        document.getElementById('player1name').textContent = name1;
-        document.getElementById('player2name').textContent = name2;
+        Player1 = Player(name1, 'O');
+        Player2 = Player(name2, 'X');
+
+        document.getElementById('player1name').textContent = Player1.name;
+        document.getElementById('player2name').textContent = Player2.name;
+
+        _setBoard();
+        document.querySelector('.player1').classList.add('playerturn');
         document.getElementById('startpage').style.display = "none";
+
+    }
+
+    function restartGame() {
+        gameboard.resetBoard();
+        _turn = 1;
+        document.getElementById('startpage').style.display = "flex";
+        Player1 = {};
+        Player2 = {};
 
     }
 
@@ -95,6 +142,9 @@ const game = (function () {
         gameboard,
         start,
         resetForm,
+        restartGame,
+        Player1,
+        Player2,
     };
 
 
@@ -102,20 +152,6 @@ const game = (function () {
 
 
 
-//Player factory
-const Player = function (name, mark) {
 
-    let playername = '';
-
-    function setName(name) {
-        playername = name;
-    }
-
-    function addMark() {
-        game.gameboard.markboard('O');
-    }
-
-    return { playername, addMark };
-}
 
 game.resetForm();
