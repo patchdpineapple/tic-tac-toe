@@ -3,35 +3,52 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Project: Tic-Tac-Toe</title>
+    <title>Project: Tic Tac Toe</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>TIC-TAC-TOE</h1>
-    <main>
-        <div id="gamewrapper">
-            <div class="playerarea player1">
-                <div class="playername">Faker</div>
+    <div id="startpage">
+        <h1 style="margin-bottom: 30px;">TIC TAC TOE</h1>
+        <form id="formEnterName">
+            <div style="margin-bottom: 10px;">
+                <label for="player1" style="margin-right: 5px;">Player 1</label>
+                <input type="text" name="player1" class="entername" id="formPlayer1Name" placeholder="Player1 Name">
             </div>
-            <div id="boardarea">
-                <div class="btnmarkarea">O</div>
-                <div class="btnmarkarea">X</div>
-                <div class="btnmarkarea">X</div>
-                <div class="btnmarkarea">O</div>
-                <div class="btnmarkarea">X</div>
-                <div class="btnmarkarea">O</div>
-                <div class="btnmarkarea">X</div>
-                <div class="btnmarkarea">O</div>
-                <div class="btnmarkarea">X</div>
+            <div style="margin-bottom: 20px;">
+                <label for="player2">Player 2</label>
+                <input type="text" name="player2" class="entername" id="formPlayer2Name" placeholder="Player2 Name">
             </div>
-            <div class="playerarea player2">
-                <div class="playername">Ryu</div>
-            </div>
-        </div>
-    </main>
-    <div class="btnReset">RESET</div>
+            <button type="button" id="btnStart" onclick="game.start()">Start</button>
+        </form>
+    </div>
 
+    <div id="gamepage">
+        <h2 style="margin-top: 20px;">TIC TAC TOE</h1>
+            <main>
+                <div id="gamewrapper">
+                    <div class="playerarea player1 playerturn">
+                        <div class="playername" id="player1name"></div>
+                    </div>
+                    <div id="boardarea">
+                        <div class="btnmarkarea" id="0"></div>
+                        <div class="btnmarkarea" id="1"></div>
+                        <div class="btnmarkarea" id="2"></div>
+                        <div class="btnmarkarea" id="3"></div>
+                        <div class="btnmarkarea" id="4"></div>
+                        <div class="btnmarkarea" id="5"></div>
+                        <div class="btnmarkarea" id="6"></div>
+                        <div class="btnmarkarea" id="7"></div>
+                        <div class="btnmarkarea" id="8"></div>
+                    </div>
+                    <div class="playerarea player2">
+                        <div class="playername" id="player2name"></div>
+                    </div>
+                </div>
+            </main>
+            <button type="button" class="btnReset" onclick="game.gameboard.resetBoard()">RESET</button>
+    </div>
     <script src="script.js"></script>
 </body>
 
