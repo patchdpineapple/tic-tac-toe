@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="startpage">
+    <div id="startpage" class="startpage display">
         <h1 style="margin-bottom: 30px;">TIC TAC TOE</h1>
         <form id="formEnterName">
             <div style="margin-bottom: 10px;">
@@ -23,7 +23,6 @@
             <button type="button" id="btnStart" onclick="game.start()">Start</button>
         </form>
     </div>
-
     <div id="gamepage">
         <h2 style="margin-top: 20px;">TIC TAC TOE</h1>
             <main>
@@ -48,6 +47,10 @@
                 </div>
             </main>
             <button type="button" class="btnReset" onclick="game.restartGame()">RESET</button>
+    </div>
+    <div id="winnerpage" class="winnerpage">
+        <p id="displayWinner">Player1 is the winner!</p>
+        <button type="button" class="btnPlayAgain" onclick="game.restartGame()">Play again?</button>
     </div>
     <script src="script.js"></script>
 </body>

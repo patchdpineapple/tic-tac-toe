@@ -10,11 +10,10 @@ body {
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    
 }
 
-#startpage {
-    display: flex;
+.startpage {
+    display: none;
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -25,9 +24,10 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
+    
 }
 
-#startpage > h1 {
+.startpage > h1 {
     font-size: 100px;
 }
 
@@ -44,16 +44,17 @@ body {
 
 #btnStart {
     border:none;
-    width: 200px;
+    width: 230px;
     height: 70px;
     border-radius: 30px;
-    font-size: 40px;
+    font-size: 50px;
     background-color: yellow;
     color: rgb(0, 0, 0);
 }
 
 #btnStart:hover {
     box-shadow: 0px 0px 20px hsl(120, 100%, 50%);
+
 }
 
 #gamepage {
@@ -170,3 +171,58 @@ h2 {
 .btnReset:hover {
     opacity: 1;
 }
+
+.winnerpage {
+    display: none;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+    background-color: rgb(254, 255, 254);
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 600px;
+    height: 200px;
+    
+}
+
+#displayWinner {
+    margin-top: 70px;
+    font-size: 50px;
+}
+
+.win1 {
+    background-color: blue;
+}
+
+.win2 {
+    background-color: red;
+}
+
+.btnPlayAgain {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 238, 0);
+    width: 80px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    opacity: .8;
+}
+
+.btnPlayAgain:hover {
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+    opacity: 1;
+}
+
+.display {
+    display: flex;
+}
+
